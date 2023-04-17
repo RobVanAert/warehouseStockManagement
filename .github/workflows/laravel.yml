@@ -29,8 +29,8 @@ jobs:
 
   Run_linters:
     runs-on: ubuntu-latest
+    needs: Prepare_env
     steps:
-    - needs: Prepare_env
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
         php-version: '8.2'
