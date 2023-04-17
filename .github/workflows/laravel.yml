@@ -20,8 +20,8 @@ jobs:
       uses: actions/cache@v3
       id: composer-cache
       with:
-      path: vendor
-      key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}-${{ hashFiles('composer.json') }}
+        path: vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}-${{ hashFiles('composer.json') }}
 
     - name: Install Dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
