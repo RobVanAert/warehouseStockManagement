@@ -9,7 +9,6 @@ on:
 jobs:
   Prepare_env:
     runs-on: ubuntu-latest
-
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -29,7 +28,8 @@ jobs:
         touch database/database.sqlite
 
   Run_linters:
-    - runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
     - needs: Prepare_env
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
