@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AddProduct;
 
 use App\Models\ProductRepository;
 use App\Services\AddProductService;
+use Illuminate\Http\JsonResponse;
 
 class AddProductController
 {
@@ -14,7 +15,7 @@ class AddProductController
         $this->addProductService = $addProductService;
     }
 
-    public function __invoke(AddProductRequest $addProductRequest)
+    public function __invoke(AddProductRequest $addProductRequest): JsonResponse
     {
         $product = $this->addProductService->execute($addProductRequest->get('data'));
 
