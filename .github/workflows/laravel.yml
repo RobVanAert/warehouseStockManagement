@@ -51,8 +51,16 @@ jobs:
     - name: phpcs
       run: php vendor/bin/phpcs --standard=phpcs.xml --encoding=utf-8 -n -p
 
+  Run_tests:
+    runs-on: ubuntu-latest
+    needs: Prepare_env
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.2'
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      if: steps.composer-cache.outputs.cache-hit != 'true'
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: vendor/bin/phpunit -c phpunit.xml
