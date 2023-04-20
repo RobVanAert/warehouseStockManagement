@@ -38,7 +38,7 @@ class AddProductControllerTest extends TestCase
        $this->assertDatabaseCount('products', 0);
     }
 
-    public function testAreturnErrorWithMissingData()
+    public function testReturnsErrorWithMissingData()
     {
         $response = $this->post(
             'api/products',

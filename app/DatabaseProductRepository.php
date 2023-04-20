@@ -13,4 +13,9 @@ class DatabaseProductRepository implements ProductRepository
 
         return $product;
     }
+
+    public function remove(int $productId)
+    {
+        Product::destroy($productId);
+    }
 }

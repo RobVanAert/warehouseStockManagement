@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\AddProduct;
 
-use App\Models\ProductRepository;
+use App\Http\Controllers\Controller;
 use App\Services\AddProductService;
 use Illuminate\Http\JsonResponse;
 
-class AddProductController
+class AddProductController extends Controller
 {
     private AddProductService $addProductService;
 
