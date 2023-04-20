@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface ProductRepository
 {
@@ -16,4 +17,6 @@ interface ProductRepository
     public function ofId(int $productId): Product;
 
     public function update(Product $product);
+
+    public function getPaginated(): LengthAwarePaginator;
 }

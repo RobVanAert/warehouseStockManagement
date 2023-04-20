@@ -5,6 +5,7 @@ namespace App;
 use App\Models\Product;
 use App\Models\ProductRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class DatabaseProductRepository implements ProductRepository
 {
@@ -31,5 +32,10 @@ class DatabaseProductRepository implements ProductRepository
     public function update(Product $product)
     {
         $product->save();
+    }
+
+    public function getPaginated(): LengthAwarePaginator
+    {
+        return Product::paginate(10);
     }
 }
