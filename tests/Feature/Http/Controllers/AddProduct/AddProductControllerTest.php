@@ -2,6 +2,7 @@
 
 namespace Http\Controllers\AddProduct;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -10,10 +11,18 @@ class AddProductControllerTest extends TestCase
 {
     use RefreshDatabase ;
 
+    private User $user;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = User::factory()->create();
+    }
+
     public function testReturnsProductIdAfterAdding()
     {
         $expectedProductId = 1;
-        $response = $this->post(
+        $response = $this->actingAs($this->user)->post(
             'api/products',
             ['data' => ['name' => 'test', 'price' => 10, 'description' => 'description']]
         )->assertStatus(Response::HTTP_OK);
@@ -22,7 +31,7 @@ class AddProductControllerTest extends TestCase
     }
     public function testAddsProduct()
     {
-        $this->post(
+        $this->actingAs($this->user)->post(
             'api/products',
             ['data' => ['name' => 'test', 'price' => 10, 'description' => 'description']]
         )->assertStatus(Response::HTTP_OK);
@@ -32,7 +41,7 @@ class AddProductControllerTest extends TestCase
 
     public function testAddsNoProductWithMissingData()
     {
-        $this->post(
+        $this->actingAs($this->user)->post(
             'api/products',
             ['data' => ['name' => 'test', 'price' => 10,]]
         )->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -42,11 +51,20 @@ class AddProductControllerTest extends TestCase
 
     public function testReturnsErrorWithMissingData()
     {
-        $response = $this->post(
+        $response = $this->actingAs($this->user)->post(
             'api/products',
             ['data' => ['name' => 'test', 'price' => 10,]]
         )->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
         $this->assertStringContainsString('error', $response->getContent());
+    }
+
+    public function testDoesNotAddWhenNotAuthenticated()
+    {
+        $this->post(
+            'api/products',
+            ['data' => ['name' => 'test', 'price' => 10, 'description' => 'description']],
+            ['Accept' => 'application/json']
+        )->assertStatus(Response::HTTP_UNAUTHORIZED);
     }
 }

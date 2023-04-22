@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::delete('/products/{id}', RemoveProductController::class);
+    Route::post('/products', AddProductController::class);
+    Route::put('/products/{id}', UpdateProductController::class);
+});
 
-Route::delete('/products/{id}', RemoveProductController::class);
-Route::post('/products', AddProductController::class);
-Route::put('/products/{id}', UpdateProductController::class);
 Route::get('/products', GetProductsController::class);
 
 Route::post('/login', LoginController::class);
