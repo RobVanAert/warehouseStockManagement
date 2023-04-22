@@ -1,9 +1,11 @@
 <div *ngIf="articles" class="row">
-  <article *ngFor="let article of articles" class="col col-md-2 col-lg-4">
+  <article *ngFor="let article of articles" class="col col-md-2 col-lg-4 mt-3">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body h-100">
         <h5 class="card-title">{{article.name | titlecase}}</h5>
         <p class="card-text">{{article.description}}</p>
+      </div>
+      <div class="card-footer">
         <p>
           <span class="fw-bold">Stock:</span>
           {{article.stock}}

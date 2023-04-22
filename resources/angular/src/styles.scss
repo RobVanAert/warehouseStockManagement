@@ -2,9 +2,18 @@
 
 .card {
   background: $gray-100;
-  border-radius: 1rem;
+  border-radius: 15px;
+  height: 100%;
+  display: flex;
 
   .card-title {
     font-weight: bolder;
+  }
+
+  .card-footer {
+    background: $gray-100;
+    border-top: none;
+    border-radius: 15px;
+
   }
 }
