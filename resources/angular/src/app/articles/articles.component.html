@@ -1,1 +1,18 @@
-<p>articles works!</p>
+<div *ngIf="articles" class="row">
+  <article *ngFor="let article of articles" class="col col-md-2 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{article.name | titlecase}}</h5>
+        <p class="card-text">{{article.description}}</p>
+        <p>
+          <span class="fw-bold">Stock:</span>
+          {{article.stock}}
+        </p>
+        <p>
+          <span class="fw-bold">Price:</span>
+          {{article.price}}
+        </p>
+      </div>
+    </div>
+  </article>
+</div>

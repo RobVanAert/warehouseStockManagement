@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Article } from './article';
+import {PaginatedArticles} from "./paginated-articles";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
@@ -16,8 +16,8 @@ export class ArticleService {
     this.httpHeaders.append('Access-Control-Allow-Origin', 'true');
   }
 
-  getArticles(): Observable<Article[]>
+  getArticles(): Observable<PaginatedArticles>
   {
-    return this.http.get<Article[]>('http://warehouse.test/api/products', {headers: this.httpHeaders});
+    return this.http.get<PaginatedArticles>('http://warehouse.test/api/products', {headers: this.httpHeaders});
   }
 }
