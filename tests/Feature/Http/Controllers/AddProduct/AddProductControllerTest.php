@@ -1,6 +1,7 @@
 <?php
 
 namespace Http\Controllers\AddProduct;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
 use Tests\TestCase;
@@ -8,6 +9,7 @@ use Tests\TestCase;
 class AddProductControllerTest extends TestCase
 {
     use RefreshDatabase ;
+
     public function testReturnsProductIdAfterAdding()
     {
         $expectedProductId = 1;
@@ -35,7 +37,7 @@ class AddProductControllerTest extends TestCase
             ['data' => ['name' => 'test', 'price' => 10,]]
         )->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
 
-       $this->assertDatabaseCount('products', 0);
+        $this->assertDatabaseCount('products', 0);
     }
 
     public function testReturnsErrorWithMissingData()
@@ -48,4 +50,3 @@ class AddProductControllerTest extends TestCase
         $this->assertStringContainsString('error', $response->getContent());
     }
 }
-

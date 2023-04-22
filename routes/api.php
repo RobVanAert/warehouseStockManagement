@@ -21,4 +21,3 @@ Route::delete('/products/{id}', RemoveProductController::class);
 Route::post('/products', AddProductController::class);
 Route::put('/products/{id}', UpdateProductController::class);
 Route::get('/products', GetProductsController::class);
-
