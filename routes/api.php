@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddProduct\AddProductController;
-use App\Http\Controllers\GetProduct\GetProductController;
+use App\Http\Controllers\GetProduct\GetProductsController;
 use App\Http\Controllers\RemoveProduct\RemoveProductController;
 use App\Http\Controllers\UpdateProduct\UpdateProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,5 +20,5 @@ use Illuminate\Support\Facades\Route;
 Route::delete('/products/{id}', RemoveProductController::class);
 Route::post('/products', AddProductController::class);
 Route::put('/products/{id}', UpdateProductController::class);
-Route::get('/products', GetProductController::class);
+Route::get('/products', GetProductsController::class);
 

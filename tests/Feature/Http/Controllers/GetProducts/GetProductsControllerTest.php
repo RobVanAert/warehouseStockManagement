@@ -25,6 +25,6 @@ class GetProductsControllerTest extends TestCase
         $response = $this->get('api/products?page=2')
              ->assertStatus(200);
 
-        $this->assertSame(2, $response->json('data')['current_page']);
+        $this->assertSame(2, $response->json('meta')['current_page']);
     }
 }

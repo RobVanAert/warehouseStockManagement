@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\GetProduct;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductCollection;
 use App\Services\GetProductsPaginatedService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
-class GetProductController extends Controller
+class GetProductsController extends Controller
 {
     private GetProductsPaginatedService $getProductsPaginatedService;
 
@@ -16,14 +18,8 @@ class GetProductController extends Controller
         $this->getProductsPaginatedService = $getProductsPaginatedService;
     }
 
-    public function __invoke(): JsonResponse
+    public function __invoke(): ResourceCollection
     {
-        return response()->json(
-            [
-                'message' => 'paginated products',
-                'data' =>$this->getProductsPaginatedService->execute()
-            ],
-            Response::HTTP_OK
-        );
+        return new ProductCollection($this->getProductsPaginatedService->execute());
     }
 }
