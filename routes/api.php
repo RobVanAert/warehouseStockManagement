@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddProduct\AddProductController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GetProduct\GetProductsController;
 use App\Http\Controllers\RemoveProduct\RemoveProductController;
 use App\Http\Controllers\UpdateProduct\UpdateProductController;
@@ -21,3 +22,5 @@ Route::delete('/products/{id}', RemoveProductController::class);
 Route::post('/products', AddProductController::class);
 Route::put('/products/{id}', UpdateProductController::class);
 Route::get('/products', GetProductsController::class);
+
+Route::post('/login', LoginController::class);
