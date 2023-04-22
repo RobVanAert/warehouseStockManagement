@@ -17,4 +17,11 @@
       </div>
     </div>
   </article>
+
+  <ngb-pagination *ngIf="paginator"
+    [collectionSize]="paginator.total"
+    [page]="paginator.current_page"
+    [pageSize]="paginator.per_page"
+    (pageChange)="pageChange($event)"
+    class="mt-3"/>
 </div>

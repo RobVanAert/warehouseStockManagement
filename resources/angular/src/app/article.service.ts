@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {PaginatedArticles} from "./paginated-articles";
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 
 
 @Injectable({
@@ -16,8 +16,10 @@ export class ArticleService {
     this.httpHeaders.append('Access-Control-Allow-Origin', 'true');
   }
 
-  getArticles(): Observable<PaginatedArticles>
+  getArticles(page: Number = 1): Observable<PaginatedArticles>
   {
-    return this.http.get<PaginatedArticles>('http://warehouse.test/api/products', {headers: this.httpHeaders});
+    let params = new HttpParams();
+    params = params.append('page', page.toString());
+    return this.http.get<PaginatedArticles>('http://warehouse.test/api/products'  , {headers: this.httpHeaders, params: params});
   }
 }
