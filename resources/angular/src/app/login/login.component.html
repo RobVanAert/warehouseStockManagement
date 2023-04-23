@@ -1,0 +1,20 @@
+<div class="row mt-3">
+  <div class="col d-flex justify-content-end" >
+    <button (click)="showLogin()" [disabled]="showLoginFields" class="btn btn-dark">login</button>
+  </div>
+
+</div>
+  <div *ngIf="showLoginFields" class="row">
+    <div class="col-sm-6">
+      <label for="mail" class="form-label">email</label>
+      <input type="text" [(ngModel)]="email" id="mail" class="form-control">
+    </div>
+    <div class="col-sm-6">
+      <label for="pass" class="form-label"> password</label>
+      <input type="password" [(ngModel)]="password" id="pass" class="form-control">
+    </div>
+    <div class="col-2 col-md-1 mt-2">
+      <button (click)="login()" class="btn btn-primary ">login</button>
+    </div>
+  </div>
+

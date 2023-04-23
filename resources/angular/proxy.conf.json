@@ -1,0 +1,11 @@
+{
+  "/test/*":  {
+    "target": "http://warehouse.test",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/test": ""
+    }
+  }
+}

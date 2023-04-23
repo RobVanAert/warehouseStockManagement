@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/products/{id}', RemoveProductController::class);
     Route::post('/products', AddProductController::class);
     Route::put('/products/{id}', UpdateProductController::class);

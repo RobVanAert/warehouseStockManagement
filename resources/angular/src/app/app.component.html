@@ -1,5 +1,8 @@
 <div class="container">
-  <h1>Warehouse Management</h1>
+  <div class="header-top">
+    <h1>Warehouse Management</h1>
+  </div>
+  <app-login *ngIf="!isAuthorized" (authenticatedEmitter)="receiveAuthenticated($event)"></app-login>
   <app-articles></app-articles>
 </div>
 

@@ -22,12 +22,12 @@ class LoginController extends Controller
         try {
             $this->loginService->execute($request->get('email'), $request->get('password'));
 
-            return response()->json([
-                'message' => 'Login successful',
-            ]);
+            return response()->json(Auth::user()->createToken('auth_token')->plainTextToken);
         } catch (Exception $exception) {
+
             return response()->json([
                 'error' => "The given password is incorrect.",
+                'message' =>  $exception->getMessage(),
             ], Response::HTTP_UNAUTHORIZED);
         }
     }

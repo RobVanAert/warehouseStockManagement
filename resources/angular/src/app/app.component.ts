@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular';
+  isAuthorized: boolean = false;
+
+  constructor() {
+    this.isAuthorized = localStorage.getItem('token') !== null;
+  }
+
+  receiveAuthenticated(event: boolean) {
+    this.isAuthorized = event;
+  }
 }

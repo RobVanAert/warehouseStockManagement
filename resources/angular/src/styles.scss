@@ -17,3 +17,26 @@
 
   }
 }
+
+.header-top {
+  background: darkgreen;
+  color:white;
+  height: 5rem;
+
+  h1 {
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+  button {
+    background: greenyellow;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem ;
+  }
+}
