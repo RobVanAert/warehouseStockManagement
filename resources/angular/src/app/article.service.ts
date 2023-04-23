@@ -22,4 +22,14 @@ export class ArticleService {
     params = params.append('page', page.toString());
     return this.http.get<PaginatedArticles>('http://warehouse.test/api/products'  , {headers: this.httpHeaders, params: params});
   }
+
+  deleteArticle(id: Number): Observable<any>
+  {
+    return this.http.delete<any>('http://warehouse.test/api/products/' + id, {headers: {'Authorization': 'Bearer ' + this.getToken()}});
+  }
+
+  getToken(): string|null
+  {
+    return localStorage.getItem('token');
+  }
 }

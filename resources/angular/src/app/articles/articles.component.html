@@ -15,6 +15,9 @@
           {{article.price}}
         </p>
       </div>
+      <button *ngIf="authorized" class="btn btn-danger" (click)="deleteArticle(article.id)">
+        delete
+      </button>
     </div>
   </article>
 

@@ -3,7 +3,7 @@
     <h1>Warehouse Management</h1>
   </div>
   <app-login *ngIf="!isAuthorized" (authenticatedEmitter)="receiveAuthenticated($event)"></app-login>
-  <app-articles></app-articles>
+  <app-articles [authorized]="isAuthorized"></app-articles>
 </div>
 
 <router-outlet></router-outlet>
